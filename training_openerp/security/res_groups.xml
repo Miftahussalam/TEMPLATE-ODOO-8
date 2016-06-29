@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record model="res.groups" id="group_manager">
+		    <field name="name">Training / Manager</field>
+		</record>
+		 
+		<record model="res.groups" id="group_user_kursus">
+		    <field name="name">Training / Kursus User</field>
+		</record>
+		 
+		<record model="res.groups" id="group_user_sesi">
+		    <field name="name">Training / Sesi User</field>
+		</record>
+		 
+		<record model="res.groups" id="group_user_peserta">
+		    <field name="name">Training / Peserta User</field>
+		</record>
+		
+	</data>
+</openerp>

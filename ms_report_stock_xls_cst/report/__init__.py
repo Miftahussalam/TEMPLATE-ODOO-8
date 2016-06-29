@@ -1,0 +1,2 @@
+import ms_report_stock
+import ms_report_stock_xls

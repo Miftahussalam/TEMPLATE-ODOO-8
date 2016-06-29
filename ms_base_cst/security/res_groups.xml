@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+		
+		<record id="user_role" model="ir.module.category">
+			<field name="name">User Role</field>
+		</record>
+		
+		<record id="user_position" model="ir.module.category">
+			<field name="name">User Position</field>
+		</record>
+		
+		<record id="group_sys_admin" model="res.groups">
+            <field name="category_id" ref="user_role"/>
+            <field name="name">System Admin</field>
+        </record>
+		
+    </data>
+</openerp>

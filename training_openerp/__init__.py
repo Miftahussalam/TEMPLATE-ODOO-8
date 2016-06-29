@@ -1,0 +1,2 @@
+import training_openerp
+import report

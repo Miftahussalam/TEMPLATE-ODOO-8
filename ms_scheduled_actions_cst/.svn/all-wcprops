@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/tdmerp/!svn/ver/3713/branches/TDMERP-1.0/wtc_scheduled_actions
+END
+wtc_scheduled_actions.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/tdmerp/!svn/ver/3713/branches/TDMERP-1.0/wtc_scheduled_actions/wtc_scheduled_actions.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/tdmerp/!svn/ver/2582/branches/TDMERP-1.0/wtc_scheduled_actions/__init__.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/tdmerp/!svn/ver/2582/branches/TDMERP-1.0/wtc_scheduled_actions/__openerp__.py
+END

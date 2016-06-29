@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record model="ir.ui.view" id="kursus_search_view">
+		    <field name="name">training.kursus.search</field>
+		    <field name="model">training.kursus</field>
+		    <field name="arch" type="xml">
+		        <search string="Search">
+		            <filter string="Kursus Saya" icon="terp-partner" domain="[('koordinator_id', '=', uid)]"/>
+		            <field name="name"/>
+		            <field name="keterangan"/>
+		            <field name="koordinator_id"/>
+		            <group string="Group By...">
+		                <filter string="Koordinator" icon="terp-personal" context="{'group_by':'koordinator_id'}"/>
+		            </group>
+		        </search>
+		    </field>
+		</record>
+		
+		<record model="ir.ui.view" id="kursus_tree_view">
+		    <field name="name">training.kursus.tree</field>
+		    <field name="model">training.kursus</field>
+		    <field name="arch" type="xml">
+		        <tree string="List Kursus">
+		            <field name="name"/>
+		            <field name="koordinator_id"/>
+		            <field name="keterangan"/>
+		        </tree>
+		     </field>
+		</record>
+		 
+		<record model="ir.ui.view" id="kursus_form_view">
+		    <field name="name">training.kursus.form</field>
+		    <field name="model">training.kursus</field>
+		    <field name="arch" type="xml">
+		        <form string="Form Kursus" version="7.0">
+		        	<header>
+		                <button name="report_kursus" string="Print Report" type="object" icon="gtk-print"/>
+		            </header>
+		            <group>
+		                <field name="name" />
+		                <field name="koordinator_id" />
+		            </group>
+		            <notebook colspan="4">
+		                <page string="Keterangan">
+		                    <field name="keterangan" nolabel="1" colspan="4" />
+		                </page>
+		                <page string="Sesi">
+		                    <field name="sesi_ids" nolabel="1" colspan="4">
+		                        <tree string="Sesi Training">
+		                            <field name="name"/>
+		                            <field name="instructur_id"/>
+		                            <field name="tanggal_mulai"/>
+		                            <field name="durasi"/>
+		                            <field name="kursi"/>
+		                        </tree>
+		                        <form string="Sesi Training">
+		                            <field name="name"/>
+		                            <field name="instructur_id"/>
+		                            <field name="tanggal_mulai"/>
+		                            <field name="durasi"/>
+		                            <field name="kursi"/>
+		                        </form>
+		                    </field>
+		                </page>
+		            </notebook>
+		        </form>
+		    </field>
+		</record>
+		 
+		<record model="ir.actions.act_window" id="kursus_action">
+		    <field name="name">Kursus</field>
+		    <field name="res_model">training.kursus</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+		</record>
+		 
+		<menuitem id="training_menu" name="Training OpenERP" action="kursus_action"/>
+		<menuitem id="kursus_menu" name="Training" parent="training_menu" />
+		<menuitem name="Kursus" parent="kursus_menu" id="kursus_menuitem" action="kursus_action"/>
+		
+		<record model="ir.ui.view" id="sesi_calendar_view">
+		    <field name="name">training.sesi.calendar</field>
+		    <field name="model">training.sesi</field>
+		    <field name="arch" type="xml">
+		        <calendar string="Calendar Sesi"
+		                  date_start="tanggal_mulai"
+		                  date_delay="durasi"
+		                  day_length="1"
+		                  mode="week"
+		                  color="instructur_id">
+		            <field name="name"/>
+		        </calendar>
+		    </field>
+		</record>
+		
+		<record model="ir.ui.view" id="sesi_gantt_view">
+		    <field name="name">training.sesi.gantt</field>
+		    <field name="model">training.sesi</field>
+		    <field name="arch" type="xml">
+		        <gantt string="Gantt Sesi"
+		                  date_start="tanggal_mulai"
+		                  date_delay="durasi"
+		                  day_length="1"
+		                  default_group_by="instructur_id">          
+		        </gantt>
+		    </field>
+		</record>
+		
+		<record model="ir.ui.view" id="sesi_graph_view">
+		    <field name="name">training.sesi.graph</field>
+		    <field name="model">training.sesi</field>
+		    <field name="arch" type="xml">
+		        <graph string="Peserta by Kursus" type="bar" orientation="horizontal">
+		            <field name="kursus_id"/>
+		            <field name="jumlah_peserta" operator="+"/>
+		        </graph>
+		    </field>
+		</record>
+		
+		<record model="ir.ui.view" id="sesi_kanban_view">
+            <field name="name">training.sesi.kanban</field>
+            <field name="model">training.sesi</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="image"/>
+                    <templates>
+                        &lt;t t-name="kanban-box">
+                            <div class="oe_kanban_vignette oe_semantic_html_override">
+                                <a type="open"><img t-att-src="kanban_image('training.sesi', 'image', record.id.value)" class="oe_kanban_image"/></a>
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <div name="tags"/>
+                                    <ul>
+                                        <li>Kursus: <field name="kursus_id"></field></li>
+                                        <li>Tanggal: <field name="tanggal_mulai"></field></li>
+                                        <li>Instruktur: <field name="instructur_id"></field></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        &lt;/t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="sesi_tree_view">
+		     <field name="name">training.sesi.tree</field>
+		     <field name="model">training.sesi</field>
+		     <field name="arch" type="xml">
+		         <tree string="List Sesi">
+		            <field name="name" />
+		            <field name="instructur_id"/>
+		            <field name="kursus_id"/>
+		            <field name="tanggal_mulai"/>
+		            <field name="durasi"/>
+		            <field name="kuota_kehadiran_persen" widget="progressbar"/>
+		         </tree>
+		     </field>
+		</record>
+		 
+		<record model="ir.ui.view" id="sesi_form_view">
+		     <field name="name">training.sesi.form</field>
+		     <field name="model">training.sesi</field>
+		     <field name="arch" type="xml">
+		         <form string="Form Sesi" version="7.0">
+		         	<header>
+		                <button name="draft_sesi" states="confirmed" string="Reset to Draft" icon="terp-stock_effects-object-colorize"/>
+		                <button name="confirm_sesi" states="draft" string="Confirm" icon="gtk-apply"/>
+		                <button name="done_sesi" states="confirmed" string="Mark as done" icon="gtk-apply"/>
+		                <button name="%(report_sesi)d" string="Print Report" states="done" type="action" icon="gtk-print"/>
+		                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" statusbar_colors='{"draft":"red","confirmed":"blue"}'/>
+		            </header>
+		            <sheet>
+		            	<group col="4">
+			                <field name="name" colspan="4"/>
+			                <field name="instructur_id"/>
+			                <field name="kursus_id"/>
+			                <field name="tanggal_mulai"/>
+			                <field name="durasi"/>
+			                <field name="kursi" on_change="onchange_hitung_kuota(kursi, peserta_ids)"/>
+			                <field name="active"/>
+			                <field name="kuota_kehadiran_persen" widget="progressbar" colspan="4"/>
+			                <field name="image" widget="image" class="oe_avatar oe_left"/>
+			             </group>
+			             <separator string="Peserta" colspan="4"/>
+			             <field name="peserta_ids" colspan="4" nolabel="1" on_change="onchange_hitung_kuota(kursi, peserta_ids)">
+			                 <tree string="Peserta" editable="top">
+			                    <field name="peserta_id"/>
+			                 </tree>
+			             </field>
+		            </sheet>
+		         </form>
+		     </field>
+		</record>
+		 
+		<record model="ir.actions.act_window" id="sesi_list_action">
+		    <field name="name">Sesi</field>
+		    <field name="res_model">training.sesi</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
+		</record>
+		 
+		<menuitem id="sesi_menu" name="Sesi" parent="kursus_menu" action="sesi_list_action" />
+		
+		<record model="ir.ui.view" id="partner_instructur_form_view">
+		    <field name="name">res.partner.form.instructur</field>
+		    <field name="model">res.partner</field>
+		    <field name="inherit_id" ref="base.view_partner_form" />
+		    <field name="arch" type="xml">
+		        <field name="email" position="after">
+		            <field name="instructur"/>
+		        </field> 
+		    </field>
+		</record>
+		
+		<record model="ir.ui.view" id="tambah_peserta_form_view">
+		    <field name="name">training.tambah.peserta.wizard.form</field>
+		    <field name="model">training.tambah.peserta.wizard</field>
+		    <field name="arch" type="xml">
+		        <form string="Tambah Peserta" version="7.0">
+		            <separator string="Sesi" colspan="4"/>               
+		            <group colspan="4">
+		                <field name="sesi_ids" nolabel="1"/>
+		            </group>
+		            <separator string="Para Peserta" colspan="4"/>
+		            <group colspan="4">
+		                <field name="peserta_ids" mode="tree" nolabel="1">
+		                    <tree editable="bottom">
+		                        <field name="peserta_id"/>
+		                    </tree>
+		                </field>
+		            </group>
+		            <footer>
+		                <button name="tambah_peserta" string="Tambah" type="object" class="oe_highlight"/>
+		                or 
+		                <button string="Cancel" class="oe_link" special="cancel" />
+		            </footer>
+		        </form>
+		    </field>
+		</record>
+		 
+		<record model="ir.actions.act_window" id="tambah_peserta_wizard_action">
+		    <field name="name">Tambah Peserta</field>
+		    <field name="res_model">training.tambah.peserta.wizard</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">form</field>
+		    <field name="target">new</field>
+		</record>
+		 
+		<menuitem name="Tambah Peserta" parent="kursus_menu" id="tambah_peserta_wizard_menu" action="tambah_peserta_wizard_action"/>
+		
+	</data>
+</openerp>

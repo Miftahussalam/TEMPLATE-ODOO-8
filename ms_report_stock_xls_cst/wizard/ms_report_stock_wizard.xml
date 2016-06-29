@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	    <record id="view_report_stock_xls" model="ir.ui.view">
+			<field name="name">Print Report Stock</field>
+			<field name="model">ms.report.stock.xls</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+			
+		        <form string="Report Stock">
+		        	<group col="4" colspan="4">
+		   				<field name="product_ids" widget="many2many_tags" options="{'no_create':True, 'no_open':True}" on_change="categ_ids_change(categ_ids)"/>
+		          	</group>
+					<notebook colspan="5">
+			      		<page string="Categories">
+			          		<field name="categ_ids" colspan="4" nolabel="1" on_change="categ_ids_change(categ_ids)"/>
+			          	</page>
+			      		<page string="Locations">
+			          		<field name="location_ids" domain="[('usage','=','internal')]" colspan="4" nolabel="1"/>
+			          	</page>
+		        	</notebook>
+		          	<footer>
+		            	<button name="xls_export" string="Export" type="object" icon="gtk-execute" context="{'xls_export':1}" class="oe_highlight"/>
+		            	or <button string="Cancel" class="oe_link" special="cancel"/>
+		          	</footer>
+		        </form>
+		        
+	    	</field>
+	    </record>
+		
+	    <record id="action_report_stock_xls" model="ir.actions.act_window">
+			<field name="name">Report Stock</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ms.report.stock.xls</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_report_stock_xls"/>
+			<field name="target">new</field>
+	    </record>
+		
+		<menuitem id="menu_report_stock_xls" action="action_report_stock_xls" parent="stock.next_id_61" sequence="17"/>
+		
+	</data>
+</openerp>

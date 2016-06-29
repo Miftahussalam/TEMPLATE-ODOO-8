@@ -1,0 +1,7 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+kursus_all,kursus_all,model_training_kursus,group_manager,1,1,1,1
+sesi_all,sesi_all,model_training_sesi,group_manager,1,1,1,1
+peserta_all,peserta_all,model_training_peserta,group_manager,1,1,1,1
+kursus_read,kursus_read,model_training_kursus,group_user_kursus,1,0,0,0
+sesi_read,sesi_read,model_training_sesi,group_user_sesi,1,0,0,0
+peserta_read,peserta_read,model_training_peserta,group_user_peserta,1,0,0,0

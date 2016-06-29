@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ms_scheduled_actions_all,ms_scheduled_actions_all,model_ms_scheduled_actions,,1,1,1,1

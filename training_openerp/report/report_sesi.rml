@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<document filename="Form Sesi.pdf">
+ 
+  <!-- DEFINISI LAYOUT (Ukuran Kertas) -->
+   
+  <template pageSize="(595.0, 842.0)" title="Session Report" author="Radio Rodja 756 am (http://radiorodja.com)">
+    <pageTemplate id="first">
+         
+      <!-- Menentukan luas dari canvas yang dapat kita 'tulis' dengan parameter widht & height beserta titik awal penulisan identasi/margin -->
+  
+      <frame id="first" x1="20.0" y1="485.0" width="538" height="350"/>
+      <header>
+            <!-- Membuat text/image sesuai dengan presisi yang tepat dengan menggunakan titik koordinat -->
+             
+            <pageGraphics>
+                <setFont name="Helvetica" size="6"/>
+                <drawString x="19.0cm" y="1cm"> <pageNumber/></drawString>
+            </pageGraphics>
+             
+        </header>
+    </pageTemplate>
+  </template>
+   
+  <!-- DEFINISI STYLE -->
+   
+  <stylesheet>
+ 
+ 
+    <!-- Mendefiniskan Style Tabel -->
+     
+    <blockTableStyle id="Table_String">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+ 
+     
+    <blockTableStyle id="List_Order_Reference_Tbl">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+        <!-- Kolom ke-1 -->
+        <!-- atas --><lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+        <!-- kanan --><lineStyle kind="LINEBEFORE" colorName="#000000" start="1,-1" stop="1,-1"/>
+        <!-- bawah --><lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+        <!-- kiri --><lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,0"/>
+        <!-- Kolom ke-2 -->
+        <!-- atas --><lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+        <!-- kanan --><lineStyle kind="LINEBEFORE" colorName="#000000" start="2,-1" stop="2,-1"/>
+        <!-- bawah --><lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+        <!-- kiri --><lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,0"/>
+    </blockTableStyle>
+     
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+        
+    <!-- Mendefinisikan Style Huruf -->
+     
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_table_header" fontName="Helvetica-Bold" fontSize="7.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default" fontName="Helvetica" fontSize="7.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+     
+    <images/>
+  </stylesheet>
+   
+  <!-- DEFINISI DATA -->
+  <story>
+  <pto>
+  
+    <!-- DEFINISI OBJECT ALIAS -->
+   
+    <para style="terp_default">[[repeatIn(objects, 'sesi')]] </para>
+ 
+ 
+    <!-- Membuat Judul Report -->
+      
+    <blockTable colWidths="500.0" style="Table_String">
+      <tr><td><para style="terp_header">REPORT SESI</para></td></tr>
+    </blockTable>
+ 
+    <!-- Membuat Header Report -->
+     
+    <blockTable colWidths="380.0,120.0" style="Table_String">
+      <tr>
+        <td>
+          <para style="terp_default">Judul Sesi : [[ sesi.name ]]</para>
+          <para style="terp_default">Instruktur : [[ sesi.instructur_id.name ]]</para>
+          <para style="terp_default">Jumlah Kursi : [[ sesi.kursi ]]</para>
+        </td>
+        <td>
+          <para style="terp_default">Kursus : [[ sesi.kursus_id.name ]]</para>
+          <para style="terp_default">Tanggal Mulai : [[ sesi.tanggal_mulai ]]</para>
+          <para style="terp_default">Durasi : [[ sesi.durasi ]]</para>
+        </td>
+      </tr>
+    </blockTable>
+     
+    <!-- Membuat Gap/Space Baris Kosong -->
+     
+    <para style="terp_default"><font color="white">1</font></para>
+     
+    <!-- Membuat Header Tabel Peserta -->
+     
+    <blockTable colWidths="350.0,150.0" repeatRows="1" style="List_Order_Reference_Tbl">
+      <tr>
+        <td><para style="terp_table_header">PESERTA</para></td>
+        <td><para style="terp_table_header">PHONE</para></td>
+      </tr>
+    </blockTable>
+     
+    <!-- Membuat Looping Data Tabel Peserta (Element Section) -->
+     
+    <section>
+       
+      <para style="terp_default">[[ repeatIn(sesi.peserta_ids, 'x') ]]</para>
+       
+      <blockTable colWidths="350.0,150.0" repeatRows="0" style="List_Order_Reference_Tbl">
+        <tr>
+          <td><para style="terp_default">[[ x.peserta_id.name ]]</para></td>
+          <td><para style="terp_default">[[ x.peserta_id.phone ]]</para></td>
+        </tr>
+      </blockTable>
+       
+    </section>
+     
+  </pto>
+  </story>
+</document>

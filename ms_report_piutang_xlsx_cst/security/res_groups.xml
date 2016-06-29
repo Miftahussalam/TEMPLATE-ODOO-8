@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+    	
+<!-- Report Piutang -->
+		
+        <record id="group_ms_report_piutang_xlsx" model="res.groups">
+            <field name="category_id" ref="ms_base_cst.user_role"/>
+            <field name="name">Report Piutang</field>
+            <field name="menu_access" eval="[(4, ref('menu_report_piutang_xlsx'))]"/>
+        </record>
+        
+        <record id="ms_base_cst.group_sys_admin" model="res.groups">
+			<field name="implied_ids" eval="[(4,ref('group_ms_report_piutang_xlsx'))]"/>
+		</record>
+		
+    </data>
+</openerp>

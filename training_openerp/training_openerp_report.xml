@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+  
+        <report id="report_sesi" string="Report Sesi"
+                model="training.sesi" name="rml.sesi"
+                rml="training_openerp/report/report_sesi.rml"
+                auto="False" menu="False"/>
+ 
+        <report id="report_kursus"  string="Report Kursus"
+                model="training.kursus" name="webkit.kursus"
+                file="training_openerp/report/report_kursus.mako"
+                report_type="webkit" auto="False" menu="False"/>
+         
+    </data>
+</openerp>

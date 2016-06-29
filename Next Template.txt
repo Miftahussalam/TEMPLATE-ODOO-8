@@ -1,0 +1,4 @@
+- report pdf wizard (A4, A4 dibagi dua)
+- report docx
+- menu utk incoming, outgoing dan internal
+- 
