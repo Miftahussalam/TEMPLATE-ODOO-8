@@ -1,2 +1,2 @@
 # odoo8
-Template odoo 8
+Template Odoo 8
