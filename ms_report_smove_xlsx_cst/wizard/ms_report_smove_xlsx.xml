@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+    <record id="view_report_smove_xlsx" model="ir.ui.view">
+		<field name="name">Print Report Stock Movement</field>
+		<field name="model">ms.report.smove.xlsx</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			
+	        <form string="Report Stock Movement">
+	        	<group col="4" colspan="4">
+                    <field name="picking_type_code" attrs="{'invisible':[('state_x','=','get')]}"/>
+                    <label for="start_date" string="Start Date" attrs="{'invisible':[('state_x','=','get')]}"/>
+                    <div attrs="{'invisible':[('state_x','=','get')]}">
+                        <field name="start_date" class="oe_inline"/> - <field name="end_date" class="oe_inline"/>
+                    </div>
+                    <field name="product_ids" widget="many2many_tags" options="{'no_create':True, 'no_open':True}" on_change="categ_ids_change(categ_ids)" attrs="{'invisible':[('state_x','=','get')]}"/>
+                </group>
+                <notebook colspan="5" attrs="{'invisible':[('state_x','=','get')]}">
+                    <page string="Partners">
+                        <field name="partner_ids" colspan="4" nolabel="1"/>
+                    </page>
+                    <page string="Source Locations" attrs="{'invisible':[('state_x','=','get')]}">
+                        <field name="location_ids" colspan="4" nolabel="1" domain="[('usage','=','internal')]"/>
+                    </page>
+                    <page string="Destination Locations" attrs="{'invisible':[('state_x','=','get')]}">
+                        <field name="location_dest_ids" colspan="4" nolabel="1" domain="[('usage','=','internal')]"/>
+                    </page>
+                    <page string="Product Categories" attrs="{'invisible':[('state_x','=','get')]}">
+                        <field name="categ_ids" colspan="4" nolabel="1" on_change="categ_ids_change(categ_ids)"/>
+                    </page>
+                </notebook>
+	        	
+                <field invisible="1" name="state_x"/>
+                <newline/>
+                
+                <group col="4" fill="0" attrs="{'invisible':[('state_x','!=','get')]}">
+                    <separator colspan="4" string="Excel Report Generated. Click link below to download ..." attrs="{'invisible':[('state_x','=','choose')]}"/>
+                    <field name="name" invisible="1" width="100" attrs="{'invisible':[('state_x','=','choose')]}"/>
+                    <field name="data_x" nolabel="1" readonly="0" width="100" filename="name" attrs="{'invisible':[('state_x','=','choose')]}"/>
+                </group>
+                
+                <footer>
+                    <button name="excel_report" attrs="{'invisible':[('state_x','=','get')]}" string="Export Report" type="object" class="oe_highlight"/>
+                    <label string=" or " attrs="{'invisible':[('state_x','=','get')]}"/>
+                    <button string="Cancel" attrs="{'invisible':[('state_x','=','get')]}" class="oe_link" special="cancel" />
+                </footer>
+	          	
+	        </form>
+    	</field>
+    </record>
+	
+    <record id="action_report_smove_xlsx" model="ir.actions.act_window">
+		<field name="name">Report Stock Movement</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">ms.report.smove.xlsx</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_report_smove_xlsx"/>
+		<field name="target">new</field>
+    </record>
+	
+	<menuitem id="menu_report_smove_xlsx" action="action_report_smove_xlsx" parent="stock.next_id_61" sequence="20"/>
+	
+	</data>
+</openerp>

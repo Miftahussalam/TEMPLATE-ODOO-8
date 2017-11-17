@@ -1,1 +1,1 @@
-import ms_report_stock_wizard
+import ms_report_stock_xls

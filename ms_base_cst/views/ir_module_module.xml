@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record model="ir.ui.view" id="ms_ir_module_module_search">
+		    <field name="name">ms.ir.module.module.search</field>
+		    <field name="model">ir.module.module</field>
+		    <field name="inherit_id" ref="base.view_module_filter"/>
+		    <field name="arch" type="xml">
+		    	
+		    	<field name="name" position="after">
+		    		<field name="author"/>
+		    		<field name="website"/>
+		    		<filter name="filter_miftah" string="New Addons" domain="[('author','=','Miftahussalam')]"/>
+		    	</field>
+		    	
+		     </field>
+		</record>
+        
+	</data>
+</openerp>

@@ -1,1 +1,1 @@
-import ms_report_smove_wizard
+import ms_report_smove_xls

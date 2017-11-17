@@ -11,7 +11,7 @@
         </record>
         
         <record id="ms_base_cst.group_sys_admin" model="res.groups">
-			<field name="implied_ids" eval="[(4,ref('group_ms_report_hutang_xls'))]"/>
+			<field name="implied_ids" eval="[(4,ref('group_ms_report_hutang_xlsx'))]"/>
 		</record>
 		
     </data>

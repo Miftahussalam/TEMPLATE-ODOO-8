@@ -75,9 +75,12 @@ class ms_report_smove_print(report_sxw.rml_parse):
             where_product_ids = " smove.product_id in %s" % str(tuple(product_ids)).replace(',)', ')')
         
         query_smove = """
-            select spt.name as picking_type_name, spick.name as picking_name, partner.name as partner_name, categ.name as prod_categ, prod.name_template as prod_tmpl,
-            sum(smove.product_uom_qty) as qty, spick.date + interval %s as pick_date, spick.date_done + interval %s as pick_date_done, src_loc.complete_name as src_location,
-            dest_loc.complete_name as dest_location, spick.origin, backorder.name as backorder
+            select spt.name as picking_type_name, spick.name as picking_name,
+            partner.name as partner_name, categ.name as prod_categ,
+            prod.name_template as prod_tmpl, sum(smove.product_uom_qty) as qty,
+            spick.date + interval %s as pick_date, spick.date_done + interval %s as pick_date_done,
+            src_loc.complete_name as src_location, dest_loc.complete_name as dest_location,
+            spick.origin, backorder.name as backorder
             from stock_move smove
             left join stock_picking spick on spick.id = smove.picking_id
             left join stock_picking backorder on backorder.id = spick.backorder_id

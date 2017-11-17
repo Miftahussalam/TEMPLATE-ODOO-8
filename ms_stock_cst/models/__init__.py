@@ -1,1 +1,1 @@
-import ms_sock_picking
+import stock_picking

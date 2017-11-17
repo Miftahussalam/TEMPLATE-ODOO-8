@@ -25,22 +25,6 @@ class report_stock_xls(report_xls):
 
         # Cell Styles
         _xs = self.xls_styles
-        """
-        _xs = {'right': 'align: horz right;', 
-        'left': 'align: horz left;', 
-        'center': 'align: horz center;', 
-        'bottom': 'align: vert bottom;', 
-        'top': 'align: vert top;', 
-        'bold': 'font: bold true;', 
-        'italic': 'font: italic true;', 
-        'underline': 'font: underline true;', 
-        'fill': 'pattern: pattern solid, fore_color 26;',
-        'fill_blue': 'pattern: pattern solid, fore_color 27;', 
-        'fill_grey': 'pattern: pattern solid, fore_color 22;',
-        'wrap': 'align: wrap true;', 
-        'borders_all': 'borders: left thin, right thin, top thin, bottom thin, left_colour 22, right_colour 22, top_colour 22, bottom_colour 22;', 
-        'xls_title': 'font: bold true, height 240;'}
-        """
         
         header_total_format = _xs['bold'] + _xs['fill'] + _xs['borders_all']
         

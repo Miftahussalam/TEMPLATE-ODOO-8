@@ -10,7 +10,7 @@
     "demo_xml": [],
     "data": [
         "security/res_groups.xml",
-        "views/ms_ir_module_module.xml",
+        "views/ir_module_module.xml",
     ],
     "active": False,
     "installable": True

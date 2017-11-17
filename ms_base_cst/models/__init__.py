@@ -1,2 +1,2 @@
-import ms_ir_sequence
-import ms_res_company
+import ir_sequence
+import res_company
