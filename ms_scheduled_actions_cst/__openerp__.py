@@ -2,7 +2,7 @@
     "name": "Scheduled Actions",
     "version": "1.0",
     "author": "Miftahussalam",
-    "website": "http://miftahsalam.wordpress.com",
+    "website": "http://miftahussalam.com",
     "category": "New Module",
     "description": "Scheduled Actions",
     "depends": ["ms_base_cst"],

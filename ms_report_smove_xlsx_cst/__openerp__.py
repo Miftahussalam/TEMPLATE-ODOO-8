@@ -2,7 +2,7 @@
     "name":"Report Stock Movement .xlsx",
     "version":"1.0",
     "author":"Miftahussalam",
-    "website":"http://miftahsalam.wordpress.com",
+    "website":"http://miftahussalam.com",
     "category":"New Module",
     "description":"Report Stock Movement .xlsx",
     "depends":["ms_base_cst","account"],

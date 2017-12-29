@@ -2,7 +2,7 @@
     "name": "Sales Management",
     "version": "1.0",
     "author": "Miftahussalam",
-    "website": "http://miftahsalam.wordpress.com",
+    "website": "http://miftahussalam.com",
     "category": "Custom Module",
     "description": "Sales Management",
     "depends": ["ms_base_cst","sale"],

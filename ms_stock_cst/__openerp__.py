@@ -2,7 +2,7 @@
     "name": "Warehouse Management",
     "version": "1.0",
     "author": "Miftahussalam",
-    "website": "http://miftahsalam.wordpress.com",
+    "website": "http://miftahussalam.com",
     "category": "Custom Module",
     "description": "Warehouse Management",
     "depends": ["ms_base_cst","stock"],

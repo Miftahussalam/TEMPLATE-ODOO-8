@@ -2,7 +2,7 @@
     "name":"Report Piutang .xlsx",
     "version":"1.0",
     "author":"Miftahussalam",
-    "website":"http://miftahsalam.wordpress.com",
+    "website":"http://miftahussalam.com",
     "category":"New Module",
     "description":"Report Piutang .xlsx",
     "depends":["ms_base_cst","account"],

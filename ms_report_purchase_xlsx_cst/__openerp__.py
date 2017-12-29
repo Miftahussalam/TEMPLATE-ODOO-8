@@ -2,7 +2,7 @@
     "name":"Purchase Report .xlsx",
     "version":"1.0",
     "author":"Miftahussalam",
-    "website":"http://miftahsalam.wordpress.com",
+    "website":"http://miftahussalam.com",
     "category":"New Module",
     "description":"Purchase Report .xlsx",
     "depends":["ms_base_cst","purchase"],

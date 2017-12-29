@@ -2,7 +2,7 @@
     "name": "Base",
     "version": "1.0",
     "author": "Miftahussalam",
-    "website": "http://miftahsalam.wordpress.com",
+    "website": "http://miftahussalam.com",
     "category": "Custom Module",
     "description": "Dibutuhkan oleh semua custom module",
     "depends": ["base"],
